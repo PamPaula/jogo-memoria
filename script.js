@@ -1,9 +1,12 @@
 const cards = document.querySelectorAll('.card');
 let hasFlippedCard = false;
 let firstCard, secondCard;
+let lockBoard = false;
 
 //virando a carta
 function flipCard() {
+    if(lockBoard) return; //trancando o tabuleiro
+
     this.classList.add('flip');
     if(!hasFlippedCard) {
         hasFlippedCard = true;
@@ -34,9 +37,13 @@ function disableCards() {
 
 //desvirando as cartas
 function unflipCards() {
+    lockBoard = true; //trancando o tabuleiro
+
     setTimeout(() => {
         firstCard.classList.remove('flip');
         secondCard.classList.remove('flip');
+
+        lockBoard = false; //trancando o tabuleiro
     }, 1500);
 }
 
