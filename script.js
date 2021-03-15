@@ -6,6 +6,7 @@ let lockBoard = false;
 //virando a carta
 function flipCard() {
     if(lockBoard) return; //trancando o tabuleiro
+    if(this === firstCard) return; //não deixando clicar duas vezes na mesma carta
 
     this.classList.add('flip');
     if(!hasFlippedCard) {
